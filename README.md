@@ -1,2 +1,2 @@
 # SimpleBash
-Implementation of "cat" and "grep" utilities
+Implementation of "cat" and "grep" utilities on C
