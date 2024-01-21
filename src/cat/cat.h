@@ -1,8 +1,8 @@
 #ifndef SRC_CAT_CAT_H_  //  SRC_CAT_CAT_H_
 #define SRC_CAT_CAT_H_  //  SRC_CAT_CAT_H_
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define max_size 100
 
@@ -14,9 +14,9 @@ int T_option(char symb);
 int V_option(char symb);
 
 typedef struct cat_string {
-    int count_files;
-    short b_opt, e_opt, n_opt, s_opt, t_opt, v_opt;
-    char **file_args;
+  int count_files;
+  short b_opt, e_opt, n_opt, s_opt, t_opt, v_opt;
+  char **file_args;
 } cat_string;
 
 #endif  // SRC_CAT_CAT_H_

@@ -10,16 +10,13 @@ else
  LEAKS=CK_FORK=no leaks --atExit -- ./test.out
 endif
 
-all: s21_cat cpplint cppcheck leaks
+all: s21_cat clang check leaks
+
+clean:
+	rm -Rf *.o s21_cat *.txt vgcheck *.dSYM *.out
 
 s21_cat: s21_cat.o cat.o
 	$(CC) $(CFLAGS) s21_cat.o cat.o -o s21_cat
-
-s21_cat.o: s21_cat.c
-	$(CC) -c s21_cat.c
-
-cat.o: cat.c
-	$(CC) -c cat.c
 
 test: access_test
 	./test_cat.sh
@@ -31,15 +28,19 @@ val: access_test
 	$(CC) -O0 -g s21_cat.c cat.c -o vgcheck
 	valgrind ./test_cat.sh --leak-check=full
 
-cpplint:
-	python3 ../../materials/linters/cpplint.py --extensions=c *.c *.h
+clang:
+	clang-format -i *.c *.h
+	clang-format -n *.c *.h
 
 leaks: access_test
 	leaks -atExit -- ./test_cat.sh
 
-cppcheck:
+check:
 	cppcheck *.c *.h
 
-clean:
-	rm -Rf *.o s21_cat *.txt vgcheck *.dSYM *.out
+s21_cat.o: s21_cat.c
+	$(CC) -c s21_cat.c
+
+cat.o: cat.c
+	$(CC) -c cat.c
 
