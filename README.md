@@ -1,6 +1,8 @@
 # SimpleBash
 Implementation of "cat" and "grep" utilities on C
 
+Завершено 24.06.2022
+
 ## Introduction
 
 В этом проекте разработаны базовые утилиты Bash **cat** и **grep** по работе с текстами. Эти утилиты достаточно часто используются при работе в терминале Linux.
